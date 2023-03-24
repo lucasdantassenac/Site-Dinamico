@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="./css/header.css">
     
   </head>
-  <body style='background-color:#0597F2'>
+  <body>
     <?php include './includes/header.php';?>
     <section>
       
