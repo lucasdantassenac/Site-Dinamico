@@ -1,4 +1,8 @@
-<?php include './head.php';?>
+<?php include './head.php';
+include './includes/conexao.php';
+$sql = "select * from usuario order by nome limit 4";
+$seleciona = mysqli_query($conexao,$sql); 
+?>
   <body>
     <?php include './includes/header.php';?>
     <section>
@@ -34,6 +38,9 @@
         </div>
         <div class="produtos mt-5" id="jogos">
           <div class="row">
+          <?php
+            while ($exibe = mysqli_fetch_array($seleciona)){  
+              $login = $exibe['login'];?>
               <div class="col-12 col-md-6 col-lg-3 mt-3">
               <div class="card">
                   <img src="img/GABINETE GAMER COUGAR MX440 MESH RGB, MID-TOWER, LATERAL DE VIDRO, COM 2 FANS, PRETO, 3856C10.0007(700x700).jpg" class="card-img-top" alt="...">
@@ -43,8 +50,10 @@
                   </div>
               </div>
               </div>
-
-                  <div class="col-12 col-md-6 col-lg-3 mt-3">
+          <?php
+              }
+            ?>
+              <div class="col-12 col-md-6 col-lg-3 mt-3">
               <div class="card">
                   <img src="img/GABINETE GAMER COUGAR MX440 MESH RGB, MID-TOWER, LATERAL DE VIDRO, COM 2 FANS, PRETO, 3856C10.0007(700x700).jpg" class="card-img-top" alt="...">
                   <div class="card-body">
@@ -205,6 +214,4 @@
       </div>
   </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  </body>
-</html>
+  <?php include './include/rodape.php'; ?>
