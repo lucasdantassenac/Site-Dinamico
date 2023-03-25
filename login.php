@@ -5,20 +5,19 @@ $styles = array(
   2 => 'header.css',
   3 => 'rodape.css',
 );
+include './head.php';
 ?>
   <body>
-          <header>
-             Fazer Seu Login
-        </header>
+    <?php include '/cariocatech/includes/header.php' ; ?>
             
           
-        <form name="form">
+        <form name="form" action='/cariocatech/includes/verify_login.php' method='post'>
           
           <label for="email"></label>
           <input id="email" type="email" placeholder="Email" class="p-3">
           <br><br>
           <label  for="senha"></label>
-          <input id="senha" type="passeword" placeholder="Senha" class="p-3">
+          <input id="senha" type="password" placeholder="Senha" class="p-3">
           <br><br>
           <!-- <button>ENTRAR</button>
           <button>CADASTRAR-SE</button> -->
