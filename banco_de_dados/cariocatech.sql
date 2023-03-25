@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22-Mar-2023 às 23:03
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- Tempo de geração: 25-Mar-2023 às 23:55
+-- Versão do servidor: 10.4.27-MariaDB
+-- versão do PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,7 @@ CREATE TABLE `compras` (
   `valor_total` float DEFAULT NULL,
   `id_produto` int(11) DEFAULT NULL,
   `id_usuario` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -55,7 +55,14 @@ CREATE TABLE `produtos` (
   `id_comentario` int(11) DEFAULT NULL,
   `id_avaliacao` int(11) DEFAULT NULL,
   `id_compra` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `produtos`
+--
+
+INSERT INTO `produtos` (`id_produto`, `nome`, `criacao`, `data_desconto`, `preco`, `descricao`, `foto`, `desconto`, `autor`, `id_categoria`, `id_comentario`, `id_avaliacao`, `id_compra`) VALUES
+(1, 'Produto01', '2023-03-25 15:54:07', NULL, 5, 'descricao do produto', 'pc-gamer-01.jpg', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -71,8 +78,19 @@ CREATE TABLE `usuario` (
   `email` varchar(255) DEFAULT NULL,
   `criacao` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `nascimento` date DEFAULT NULL,
-  `id_compra` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `nivel` varchar(255) DEFAULT NULL,
+  `senha` varchar(255) DEFAULT NULL,
+  `endereco` varchar(255) NOT NULL,
+  `id_compra` int(11) DEFAULT NULL,
+  `celular` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `foto`, `nome`, `cartao`, `email`, `criacao`, `nascimento`, `nivel`, `senha`, `endereco`, `id_compra`, `celular`) VALUES
+(1, 'user.png', 'Lucas', NULL, 'lucas@lucas.com', '2023-03-25 22:18:46', NULL, 'adm', '123', 'Rua tal', NULL, '(21) 99999-9999');
 
 --
 -- Índices para tabelas despejadas
@@ -114,13 +132,13 @@ ALTER TABLE `compras`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restrições para despejos de tabelas
