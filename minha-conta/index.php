@@ -45,9 +45,11 @@ if(ISSET($_SESSION['email'])){
             <?php 
               if($_SESSION['nivel'] === 'adm'){
             ?>
+            <div class='mt-2'><h6>Administre</h6><br></div>
             <div class="d-flex justify-content-center mb-2">
-              <button type="button" class="btn btn-primary">Follow</button>
-              <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+              <button type="button" class="btn btn-outline-primary">Usuários</button>
+              <button type="button" class="btn btn-outline-primary ms-1">Produtos</button>
+              <button type="button" class="btn btn-primary">Minha conta</button>
             </div>
             <?php } ?>
           </div>
