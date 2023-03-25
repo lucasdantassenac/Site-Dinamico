@@ -5,10 +5,11 @@ if (ISSET($_POST['email'])){
     $senha = filter_var($_POST['senha'], FILTER_SANITIZE_STRING);
     $sql = "SELECT * FROM usuario WHERE email = '$email';";
     $query = mysqli_query($conexao, $sql);
-    print_r($query);
+    $query = mysqli_fetch_array($query);
     if($query){
         SESSION_START();
         $_SESSION['email'] = $email;
+        $_SESSION['nivel'] = $query['nivel'];
         header('location:../minha-conta');
     } else {
         echo "deu erro";
