@@ -1,6 +1,6 @@
 <?php include './head.php';
 include './includes/conexao.php';
-$sql = "select * from usuario order by nome limit 4";
+$sql = "select * from produtos order by nome limit 4";
 $seleciona = mysqli_query($conexao,$sql); 
 ?>
   <body>
@@ -38,14 +38,13 @@ $seleciona = mysqli_query($conexao,$sql);
         </div>
         <div class="produtos mt-5" id="jogos">
           <div class="row">
-          <?php
-            while ($exibe = mysqli_fetch_array($seleciona)){  
-              $login = $exibe['login'];?>
+          <?php while ($exibe = mysqli_fetch_array($seleciona)){ ?>
               <div class="col-12 col-md-6 col-lg-3 mt-3">
               <div class="card">
-                  <img src="img/GABINETE GAMER COUGAR MX440 MESH RGB, MID-TOWER, LATERAL DE VIDRO, COM 2 FANS, PRETO, 3856C10.0007(700x700).jpg" class="card-img-top" alt="...">
+                  <img src="img/<?=$exibe['foto']; ?>" class="card-img-top" alt="...">
                   <div class="card-body">
-                  <h5 class="card-title">GABINETE GAMER COUGAR MX440 MESH RGB, MID-TOWER, LATERAL DE VIDRO, COM 2 FANS, PRETO, 3856C10.0007</h5>
+                  <h5 class="card-title"><?= $exibe['nome'];?></h5>
+                  <p>R$ <?= $exibe['preco'];?>,00</p>
                   <a href="#" class="btn botaocard">Comprar</a>
                   </div>
               </div>
@@ -53,35 +52,7 @@ $seleciona = mysqli_query($conexao,$sql);
           <?php
               }
             ?>
-              <div class="col-12 col-md-6 col-lg-3 mt-3">
-              <div class="card">
-                  <img src="img/GABINETE GAMER COUGAR MX440 MESH RGB, MID-TOWER, LATERAL DE VIDRO, COM 2 FANS, PRETO, 3856C10.0007(700x700).jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                  <h5 class="card-title">GABINETE GAMER COUGAR MX440 MESH RGB, MID-TOWER, LATERAL DE VIDRO, COM 2 FANS, PRETO, 3856C10.0007</h5>
-                  <a href="#" class="btn botaocard">Comprar</a>
-                  </div>
-              </div>
-              </div>
-
-              <div class="col-12 col-md-6 col-lg-3 mt-3">
-              <div class="card">
-                  <img src="img/GABINETE GAMER COUGAR MX440 MESH RGB, MID-TOWER, LATERAL DE VIDRO, COM 2 FANS, PRETO, 3856C10.0007(700x700).jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                  <h5 class="card-title">GABINETE GAMER COUGAR MX440 MESH RGB, MID-TOWER, LATERAL DE VIDRO, COM 2 FANS, PRETO, 3856C10.0007</h5>
-                  <a href="#" class="btn botaocard">Comprar</a>
-                  </div>
-              </div>
-              </div>
-
-              <div class="col-12 col-md-6 col-lg-3 mt-3">
-                  <div class="card">
-                      <img src="img/GABINETE GAMER COUGAR MX440 MESH RGB, MID-TOWER, LATERAL DE VIDRO, COM 2 FANS, PRETO, 3856C10.0007(700x700).jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                      <h5 class="card-title">GABINETE GAMER COUGAR MX440 MESH RGB, MID-TOWER, LATERAL DE VIDRO, COM 2 FANS, PRETO, 3856C10.0007</h5>
-                      <a href="#" class="btn botaocard">Comprar</a>
-                      </div>
-                  </div>
-                  </div>
+          
           </div>
       </div>
       <div class="banner"> <img src="img/banner.png" alt=""></div>
