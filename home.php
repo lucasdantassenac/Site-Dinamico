@@ -214,4 +214,4 @@ $seleciona = mysqli_query($conexao,$sql);
       </div>
   </section>
 
-  <?php include './include/rodape.php'; ?>
+  <?php include './includes/rodape.php'; ?>
