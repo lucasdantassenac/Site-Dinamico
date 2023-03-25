@@ -5,7 +5,7 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" id='logo_a' href="./"><img id='logo' src='./img/logo.png'></a>
+                    <a class="navbar-brand" id='logo_a' href="/cariocatech/"><img id='logo' src='/cariocatech/img/logo.png'></a>
                     <div class="collapse navbar-collapse m-4 mt-0 mb-0" id="navbarTogglerDemo03">
                     <div class='d-flex align-items-center form-div'>
                         <input class="form-control m-2" type="search" placeholder="procurar..." aria-label="Search">
