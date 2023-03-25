@@ -1,4 +1,11 @@
-<?php include './head.php';
+<?php 
+$styles = array(
+  0 => 'global.css',
+  1 => 'home.css',
+  2 => 'header.css',
+  3 => 'rodape.css',
+);
+include './head.php';
 include './includes/conexao.php';
 $sql = "select * from produtos order by nome limit 4";
 $seleciona = mysqli_query($conexao,$sql); 

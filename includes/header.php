@@ -17,7 +17,7 @@
                         <ul id='nav-desktop' class="navbar-nav">
                             <div class='d-flex'>
                                 <li class="nav-item account">
-                                    <a href=''>
+                                    <a href='/cariocatech/minha-conta/'>
                                         Entre
                                         <span class="material-symbols-outlined">
                                             account_circle
