@@ -1,4 +1,10 @@
 <?php
+$styles = array(
+  0 => 'global.css',
+  #1 => 'minha-conta.css',
+  2 => 'header.css',
+  3 => 'rodape.css',
+);
 include '../head.php';
 ?>
 <body>
