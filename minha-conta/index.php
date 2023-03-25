@@ -15,6 +15,9 @@ if(ISSET($_SESSION['email'])){
   $sql = "SELECT * FROM usuario WHERE email = '$email';";
   $query = mysqli_query($conexao, $sql);
   $query = mysqli_fetch_array($query);
+
+  if(ISSET($_GET['query'])) $crud = $_GET['query'];
+  else{$crud = 0;}
 }else {
   header('location:../login.php');
 }
@@ -47,9 +50,8 @@ if(ISSET($_SESSION['email'])){
             ?>
             <div class='mt-2'><h6>Administre</h6><br></div>
             <div class="d-flex justify-content-center mb-2">
-              <button type="button" class="btn btn-outline-primary">Usuários</button>
-              <button type="button" class="btn btn-outline-primary ms-1">Produtos</button>
-              <button type="button" class="btn btn-primary">Minha conta</button>
+              <a href='./?crud=usuarios' class="btn btn-outline-primary">Usuários</a>
+              <a href='./?crud=produtos'class="btn btn-outline-primary ms-1">Produtos</a>
             </div>
             <?php } ?>
           </div>
@@ -63,9 +65,11 @@ if(ISSET($_SESSION['email'])){
           </div>
         </div>      
       </div>
+      
       <div class="col-lg-8">
         <div class="card mb-4">
           <div class="card-body">
+            <?php if($crud !== 0 || $_SESSION['nivel'] !== 'adm'){?>
             <div class="row">
               <div class="col-sm-3">
                 <p class="mb-0">Nome completo</p>
@@ -101,6 +105,7 @@ if(ISSET($_SESSION['email'])){
                 <p class="text-muted mb-0"><?= $query['endereco'] ?></p>
               </div>
             </div>
+            <?php }elseif($crud !== 0) ?>
           </div>
         </div>
       </div>
