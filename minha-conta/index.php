@@ -165,10 +165,10 @@ if(ISSET($_SESSION['email'])){
               <hr>
               <?php }}elseif($crud === 'produtos' && $_SESSION['nivel'] === 'adm') {?>
                 <div class=" row text-center bg-dark text-light p-2">
-                  <div class="col-5">
+                  <div class="col-4">
                   Foto
                   </div>
-                  <div class="col-2">
+                  <div class="col-3">
                   Nome
                   </div>
                   <div class="col-2">
@@ -181,13 +181,14 @@ if(ISSET($_SESSION['email'])){
               <?php
               $sql = "SELECT * FROM produtos ORDER BY 'nome';";
               $produtos = mysqli_query($conexao, $sql);
-              while($produto = mysqli_fetch_array($produtos)){?>
+              while($produto = mysqli_fetch_array($produtos)){
+                $img = $produto['foto']?>
                 
-              <div class=" row text-center  p-2">
-                <div class="col-5">
-                <?php echo "<img src='../img/".$produto['foto']."alt='Foto do produto'>"; ?>
+              <div class=" row text-center d-flex align-items-center p-4">
+                <div class="col-4">
+                <?php echo "<img src='../img/$img' alt='Foto do produto' class='w-75'>";?>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                 <?php echo $produto['nome'] ?>
                 </div>
                 <div class="col-2">
