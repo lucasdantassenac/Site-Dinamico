@@ -16,7 +16,7 @@ if(ISSET($_SESSION['email'])){
   $query = mysqli_query($conexao, $sql);
   $query = mysqli_fetch_array($query);
 
-  if(ISSET($_GET['query'])) $crud = $_GET['query'];
+  if(ISSET($_GET['crud'])) $crud = filter_var($_GET['crud'], FILTER_SANITIZE_STRING);
   else{$crud = 0;}
 }else {
   header('location:../login.php');
@@ -50,10 +50,12 @@ if(ISSET($_SESSION['email'])){
             ?>
             <div class='mt-2'><h6>Administre</h6><br></div>
             <div class="d-flex justify-content-center mb-2">
+              <!--echo $buttons-->
               <a href='./?crud=usuarios' class="btn btn-outline-primary">Usuários</a>
               <a href='./?crud=produtos'class="btn btn-outline-primary ms-1">Produtos</a>
             </div>
             <?php } ?>
+
           </div>
           <div class="card-body">
             <hr>
@@ -69,7 +71,8 @@ if(ISSET($_SESSION['email'])){
       <div class="col-lg-8">
         <div class="card mb-4">
           <div class="card-body">
-            <?php if($crud !== 0 || $_SESSION['nivel'] !== 'adm'){?>
+
+            <?php if($crud === 0 || $_SESSION['nivel'] !== 'adm'){?>
             <div class="row">
               <div class="col-sm-3">
                 <p class="mb-0">Nome completo</p>
@@ -105,7 +108,50 @@ if(ISSET($_SESSION['email'])){
                 <p class="text-muted mb-0"><?= $query['endereco'] ?></p>
               </div>
             </div>
-            <?php }elseif($crud !== 0) ?>
+            <?php }elseif($crud === "usuarios" && $_SESSION['nivel'] === 'adm') {
+              ?> 
+              <div class=" row text-center bg-dark text-light p-2">
+                <div class="col-2">
+                Nome
+                </div>
+                <div class="col-5">
+                Email
+                </div>
+                <div class="col-2">
+                Nível
+                </div>
+                <div class="col-3">
+                Controles
+                </div>
+            </div>
+            <?php
+            $sql = "SELECT * FROM usuario ORDER BY 'nome';";
+            $usuarios = mysqli_query($conexao, $sql);
+            while($usuario = mysqli_fetch_array($usuarios)){?>
+              
+            <div class=" row text-center  p-2">
+              <div class="col-2">
+              <?php echo $usuario['nome'] ?>
+              </div>
+              <div class="col-5">
+              <?php echo $usuario['email'] ?>
+              </div>
+              <div class="col-2">
+              <?php echo $usuario['nivel'] ?>
+              </div>
+              <div class="col-3">
+                  <a href="vizualizar_usuario.php?login=<?php echo $login ?>">
+                      <span class="material-symbols-outlined"> visibility </span></a> 
+
+                  <a href="alterar_usuario.php?login=<?php echo $login ?>">  
+                      <span class="material-symbols-outlined"> edit </span></a> 
+                      
+                  <a href="excluir_usuario.php?login=<?php echo $login ?>" onclick="return confirm('Confirma a Exclusão do Usauário?')">
+                      <span class="material-symbols-outlined"> delete </span></a> 
+              </div>
+            </div>
+            <hr>
+            <?php }} ?>
           </div>
         </div>
       </div>
