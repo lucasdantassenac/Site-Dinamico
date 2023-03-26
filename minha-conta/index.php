@@ -15,8 +15,21 @@ if(ISSET($_SESSION['email'])){
   $sql = "SELECT * FROM usuario WHERE email = '$email';";
   $query = mysqli_query($conexao, $sql);
   $query = mysqli_fetch_array($query);
-
-  if(ISSET($_GET['crud'])) $crud = filter_var($_GET['crud'], FILTER_SANITIZE_STRING);
+  $botoes = 
+    "<a href='./?crud=usuarios' class='btn btn-outline-primary'>Usuários</a>
+    <a href='./?crud=produtos'class='btn btn-outline-primary ms-1'>Produtos</a>";
+  if(ISSET($_GET['crud'])) {
+    $crud = filter_var($_GET['crud'], FILTER_SANITIZE_STRING);
+    if($crud === 'usuarios'){
+      $botoes = 
+      "<a href='./?' class='btn btn-outline-primary'>Minha conta</a>
+      <a href='./?crud=produtos'class='btn btn-outline-primary ms-1'>Produtos</a>";
+    }elseif($crud === 'produtos') {
+      $botoes = 
+      "<a href='./?crud=usuarios' class='btn btn-outline-primary'>Usuários</a>
+      <a href='./?'class='btn btn-outline-primary ms-1'>Minha conta</a>";
+    }
+  }
   else{$crud = 0;}
 }else {
   header('location:../login.php');
@@ -51,8 +64,7 @@ if(ISSET($_SESSION['email'])){
             <div class='mt-2'><h6>Administre</h6><br></div>
             <div class="d-flex justify-content-center mb-2">
               <!--echo $buttons-->
-              <a href='./?crud=usuarios' class="btn btn-outline-primary">Usuários</a>
-              <a href='./?crud=produtos'class="btn btn-outline-primary ms-1">Produtos</a>
+              <?= $botoes ;?>
             </div>
             <?php } ?>
 
