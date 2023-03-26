@@ -47,19 +47,18 @@ $seleciona = mysqli_query($conexao,$sql);
           <div class="row">
           <?php while ($exibe = mysqli_fetch_array($seleciona)){ ?>
               <div class="col-12 col-md-6 col-lg-3 mt-3">
-              <div class="card">
-                  <img src="img/<?=$exibe['foto']; ?>" class="card-img-top" alt="...">
-                  <div class="card-body">
-                  <h5 class="card-title"><?= $exibe['nome'];?></h5>
-                  <p>R$ <?= $exibe['preco'];?>,00</p>
-                  <a href="./checkout.php?id=<?= $exibe['id_produto']?>" class="btn botaocard">Comprar</a>
-                  </div>
+                <div class="card">
+                    <img src="img/<?=$exibe['foto']; ?>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title"><?= $exibe['nome'];?></h5>
+                      <p>R$ <?= $exibe['preco'];?>,00</p>
+                      <a href="./checkout.php?id=<?= $exibe['id_produto']?>" class="btn botaocard">Comprar</a>
+                    </div>
+                </div>
               </div>
-              </div>
-          <?php
-              }
-            ?>
-          
+            <?php
+                }
+              ?>
           </div>
       </div>
       <div class="banner"> <img src="img/banner.png" alt=""></div>
