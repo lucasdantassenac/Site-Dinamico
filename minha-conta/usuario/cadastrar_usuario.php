@@ -15,7 +15,7 @@
         $email = trim($_POST['email']);
         $senha = trim($_POST['senha']);
         $repetirsenha = trim($_POST['repetirsenha']);
-        $nivel = 'adm';  
+        $nivel = trim($_POST['nivel']) || 'usu'; 
 
         //verificar se o login já existe
         $sql = "select * from usuario where email = '$email'";

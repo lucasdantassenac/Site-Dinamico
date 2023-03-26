@@ -122,6 +122,7 @@ if(ISSET($_SESSION['email'])){
                 </div>
               </div>
               <?php }elseif($crud === "usuarios" && $_SESSION['nivel'] === 'adm') {?> 
+                <a href='../cadastro.php' class='btn btn-outline-primary mb-4'>Adicionar novo</a>
                 <div class=" row text-center bg-dark text-light p-2">
                   <div class="col-2">
                   Nome

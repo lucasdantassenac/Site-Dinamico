@@ -5,6 +5,10 @@ $styles = array(
   2 => 'rodape.css',
 );
 include './head.php';
+if(!ISSET($_SESSION)){
+  SESSION_START();
+  if(ISSET($_SESSION['email'])) header('location:minha-conta');
+}
 ?>
   <body >
     <?php include './includes/header.php' ; ?>
@@ -62,7 +66,7 @@ include './head.php';
 
             <!-- Register buttons -->
             <div class="text-center">
-              <p>Not a member? <a href="#!">Cadastro</a></p>
+              <p>Não tem conta? <a href="./cadastro.php">Cadastro</a></p>
             </div>
           </form>
         </div>

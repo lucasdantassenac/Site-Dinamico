@@ -5,6 +5,17 @@ $styles = array(
   2 => 'rodape.css',
 );
 include './head.php';
+if(!ISSET($_SESSION)){
+  SESSION_START();
+}
+if(ISSET($_SESSION['nivel'])){
+  if($_SESSION['nivel'] === 'adm'){
+   $nivel_campo = " <div class='form-outline mb-4'>
+   <input type='text' id='nivel' name='nivel' class='form-control' />
+   <label class='form-label' for='nivel'>Nível</label>
+ </div>";
+  }
+}
 ?>
   <body >
     <?php include './includes/header.php' ; ?>
@@ -89,7 +100,9 @@ include './head.php';
               <input type="email" id="email" name="email" class="form-control" />
               <label class="form-label" for="email">E-mail</label>
             </div>
-
+            <?php if(ISSET($nivel_campo)){
+              echo $nivel_campo;
+            }?>
             <!-- Password input -->
             <div class="form-outline mb-4">
               <input type="password" id="senha" name="senha" class="form-control" />
