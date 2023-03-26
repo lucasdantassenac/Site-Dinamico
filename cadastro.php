@@ -70,11 +70,6 @@ if(ISSET($_SESSION['nivel'])){
 
             <!-- Submit button -->
             <button type="submit" class="btn btn-primary btn-block mb-4">Entrar</button>
-
-            <!-- Register buttons -->
-            <div class="text-center">
-              <p>Not a member? <a href="#!">Cadastro</a></p>
-            </div>
           </form>
         </div>
         <div class="tab-pane fade show active" id="pills-register" role="tabpane1" aria-labelledby="tab-register">
