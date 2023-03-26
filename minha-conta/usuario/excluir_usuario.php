@@ -1,14 +1,14 @@
 <?php
-    include "../adm/conexao.php";
-    include "../adm/seguranca_adm.php";
+    include '../../includes/conexao.php';
+    
 
 
-    if(isset($_GET['login'])){
+    if(isset($_GET['id_usuario'])){
         //entrada - recebe os dados
-        $login = $_GET['login'];
+        $id = $_GET['id_usuario'];
 
         //processamento - escreve e executa a sql
-        $sql = "delete from usuario where login = '$login'";
+        $sql = "delete from usuario where id_usuario = '$id'";
         $excluir = mysqli_query($conexao,$sql);
 
         //saída - dá o feedbeck ao usuário
@@ -16,7 +16,7 @@
             echo "
                 <script>
                     alert('Usuário excluido com Sucesso! ');
-                    window.location = 'listar_usuario.php';
+                    history.back();
                 </script>
             ";
 

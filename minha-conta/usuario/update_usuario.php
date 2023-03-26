@@ -1,17 +1,17 @@
 <?php
 
-    include "../adm/conexao.php";
+    include '../../includes/conexao.php'; 
     include "../adm/seguranca.php";
 
 
-    if(isset($_POST['login'])){
+    if(isset($_POST['id'])){
         //entrada - recebe os dados
-        $login = trim($_POST['login']);
+        $id = trim($_POST['id']);
         $nome = trim($_POST['nome']);
         $email = trim($_POST['email']);
 
         //processamento - incluir no banco de dados
-        $sql = "update usuario set nome = '$nome', email = '$email' where login = '$login'";
+        $sql = "update usuario set nome = '$nome', email = '$email' where id_usuario = '$id'";
         $alterar = mysqli_query($conexao,$sql);
 
         //saída - feedbak ao usuario
@@ -19,7 +19,7 @@
             echo "
                 <script>
                     alert('Usuario atualizado com sucesso!');
-                    window.location = 'listar_usuario.php';
+                    history.back();
                 </script>
             ";
         }

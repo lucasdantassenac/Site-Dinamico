@@ -1,21 +1,35 @@
 <?php
 
   
-include "../adm/conexao.php";
-include "../adm/controle.php";
-include "../adm/seguranca.php";
+ // Define o caminho para a pasta includes
+ $include_path = 'C:\xampp\htdocs\cariocatech\includes';
 
-if(isset($_GET['login'])){
+ // Define o novo include_path
+ set_include_path(get_include_path() . PATH_SEPARATOR . $include_path);
+
+ // Inclui o arquivo conexao.php
+ include 'conexao.php';
+
+
+
+$styles = array(
+    0 => 'global.css',
+    1 => 'header.css',
+    2 => 'rodape.css',
+    );
+    include '../../head.php';
+
+if(isset($_GET['id_usuario'])){
     //entrada - recebe os dados
-    $login = $_GET['login'];
+    $id = $_GET['id_usuario'];
 
     //processamento - escreve e executa a sql
-    $sql = "select * from usuario where login = '$login'";
+    $sql = "select * from usuario where id_usuario = '$id'";
     $seleciona = mysqli_query($conexao,$sql);
     $exibe = mysqli_fetch_array($seleciona);
 
     $nome = $exibe['nome'];
-    $login = $exibe['login'];
+    $id = $exibe['id_usuario'];
     $email = $exibe['email'];
 
 ?>
@@ -24,12 +38,13 @@ if(isset($_GET['login'])){
 
         <h1 class='text-center'>Alterar Usuário </h1>
         <hr>
+        <div>
         <form name="cadastro" method="post" action="update_usuario.php">
-         <input type="hidden" name="login" value="<?php echo $login ?>">   
+         <input type="hidden" name="id" value="<?php echo $id ?>">   
         
         <div class="mb-3">
-            <label for="login" class="form-label">Login</label>
-            <input class="text" id="form-control" id="login" name="login" placeholder="Login" value="<?php echo $login ?>" required disabled>
+            <label for="login" class="form-label">Id</label>
+            <input class="text" id="form-control" id="id" name="id" placeholder="id" value="<?php echo $id ?>" required readonly>
         </div>
 
         <div class="mb-3">
@@ -48,6 +63,7 @@ if(isset($_GET['login'])){
             <button type="submit" class="btn btn-primary">Alterar</button>
         </div>
         </form>
+        </div>
   
 
 <?php
@@ -61,5 +77,5 @@ if(isset($_GET['login'])){
     }
 
 
-include "../adm/rodape.php";
+    include '../../includes/rodape.php';
 ?>

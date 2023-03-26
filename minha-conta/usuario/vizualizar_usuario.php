@@ -1,17 +1,24 @@
 <?php
 
-    include "../adm/conexao.php";
-    include "../adm/controle.php";
+    include '../../includes/conexao.php';
     include "../adm/seguranca.php";
+   
+    $styles = array(
+    0 => 'global.css',
+    1 => 'header.css',
+    2 => 'rodape.css',
+    );
+    include '../../head.php';
 
 
 
-    if(isset($_GET['login'])){
+
+    if(isset($_GET['id_usuario'])){
         //entrada - recebe os dados
-        $login = $_GET['login'];
+        $id = $_GET['id_usuario'];
 
         //processamento - escreve e executa a sql
-        $sql = "select * from usuario where login = '$login'";
+        $sql = "select * from usuario where id_usuario = '$id'";
         $seleciona = mysqli_query($conexao,$sql);
         $exibe = mysqli_fetch_array($seleciona);
 
@@ -40,7 +47,7 @@
         <div class="container text-start bg-gradient p-3">
             <?php
                 echo "
-            <p> Login: $login </p>
+            <p> Nome completo: $nome </p>
             <p> Senha: **** </p>
             <p> Email: $email </p>
             ";
@@ -50,17 +57,17 @@
 
         <div class="row">
             <div class="col text-start">
-                <a href='listar_usuario.php'>
-                    <button class="btn btn-secondary btn-sm"> Voltar </button>
-                </a>
+                
+                    <button class="btn btn-secondary btn-sm" onclick="history.go(-1)"> Voltar </button>
+                
             </div>
             <div class="col text-center">
-                <a href='alterar_usuario.php?login=<?php echo $login ?>'>
+                <a href='alterar_usuario.php?id=<?php echo $id ?>'>
                     <button class="btn btn-warning btn-sm"> Alterar Senha  </button>
                 </a>
             </div>
             <div class="col text-end">
-                <a href='alterar_usuario.php?login=<?php echo $login ?>'>
+                <a href='alterar_usuario.php?id=<?php echo $id ?>'>
                     <button class="btn btn-primary btn-sm"> Editar Dados</button>
                 </a>
             </div>
@@ -79,5 +86,5 @@
         ";
     }
 
-    include "../adm/rodape.php";
+    include '../../includes/rodape.php';
 ?>

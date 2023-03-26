@@ -30,6 +30,4 @@
     </div>
 </div>
 
-<?php
-    include "../adm/rodape.php";
-?>
+<?php include './includes/rodape.php'; ?>

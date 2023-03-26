@@ -1,5 +1,14 @@
 <?php
-    include "../adm/conexao.php";
+    
+    // Define o caminho para a pasta includes
+    $include_path = 'C:\xampp\htdocs\cariocatech\includes';
+  
+    // Define o novo include_path
+    set_include_path(get_include_path() . PATH_SEPARATOR . $include_path);
+  
+    // Inclui o arquivo conexao.php
+    include 'conexao.php';
+  
     if(isset($_POST['login'])){
         $login = $_POST['login'];
         $senha = $_POST['senha'];

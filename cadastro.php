@@ -67,39 +67,39 @@ include './head.php';
           </form>
         </div>
         <div class="tab-pane fade show active" id="pills-register" role="tabpane1" aria-labelledby="tab-register">
-          <form>
+          <form name="cadastro" method="post" action="./minha-conta/usuario/cadastrar_usuario.php">
             <div class="text-center mb-3">
               <p>Faça login com</p>
             </div>
 
             <!-- Name input -->
             <div class="form-outline mb-4">
-              <input type="text" id="registerName" class="form-control" />
-              <label class="form-label" for="registerName">Nome</label>
+              <input type="text" id="nome" name="nome" class="form-control" />
+              <label class="form-label" for="nome">Nome</label>
             </div>
 
             <!-- Username input -->
             <div class="form-outline mb-4">
-              <input type="text" id="registerUsername" class="form-control" />
-              <label class="form-label" for="registerUsername">Usuário</label>
+              <input type="text" id="usuario" name="usuario" class="form-control" />
+              <label class="form-label" for="usuario">Usuário</label>
             </div>
 
             <!-- Email input -->
             <div class="form-outline mb-4">
-              <input type="email" id="registerEmail" class="form-control" />
-              <label class="form-label" for="registerEmail">E-mail</label>
+              <input type="email" id="email" name="email" class="form-control" />
+              <label class="form-label" for="email">E-mail</label>
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-4">
-              <input type="password" id="registerPassword" class="form-control" />
-              <label class="form-label" for="registerPassword">Senha</label>
+              <input type="password" id="senha" name="senha" class="form-control" />
+              <label class="form-label" for="senha">Senha</label>
             </div>
 
             <!-- Repeat Password input -->
             <div class="form-outline mb-4">
-              <input type="password" id="registerRepeatPassword" class="form-control" />
-              <label class="form-label" for="registerRepeatPassword">Confirme sua senha</label>
+              <input type="password" id="repetirsenha" name="repetirsenha"class="form-control" />
+              <label class="form-label" for="repetirsenha">Confirme sua senha</label>
             </div>
 
             <!-- Checkbox -->
@@ -112,7 +112,7 @@ include './head.php';
             </div>
 
             <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-3">Inscrever </button>
+            <button type="submit" class="btn btn-primary btn-block mb-3" id="bt">Inscrever </button>
           </form>
         </div>
       </div>

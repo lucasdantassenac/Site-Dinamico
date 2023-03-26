@@ -1,10 +1,10 @@
 <?php
-
-    if(!isset($_SESSION)){
+    include '../../includes/conexao.php';
+    if(!isset($_SESSION['email'])){
         session_start();
     }
 
-    if(!isset($_SESSION['login'])){
+    if(!isset($_SESSION['email'])){
         echo "
             <script>
                 alert('Área restrita a usuários logados.

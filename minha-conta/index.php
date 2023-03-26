@@ -139,7 +139,8 @@ if(ISSET($_SESSION['email'])){
               <?php
               $sql = "SELECT * FROM usuario ORDER BY 'nome';";
               $usuarios = mysqli_query($conexao, $sql);
-              while($usuario = mysqli_fetch_array($usuarios)){?>
+              while($usuario = mysqli_fetch_array($usuarios)){
+                $id = $usuario['id_usuario'];?>
                 
               <div class=" row text-center  p-2">
                 <div class="col-2">
@@ -152,13 +153,13 @@ if(ISSET($_SESSION['email'])){
                 <?php echo $usuario['nivel'] ?>
                 </div>
                 <div class="col-3">
-                    <a href="vizualizar_usuario.php?login=<?php echo $login ?>">
+                    <a href="./usuario/vizualizar_usuario.php?id_usuario=<?php echo $id ?>">
                         <span class="material-symbols-outlined"> visibility </span></a> 
 
-                    <a href="alterar_usuario.php?login=<?php echo $login ?>">  
+                    <a href="./usuario/alterar_usuario.php?id_usuario=<?php echo $id ?>">  
                         <span class="material-symbols-outlined"> edit </span></a> 
                         
-                    <a href="excluir_usuario.php?login=<?php echo $login ?>" onclick="return confirm('Confirma a Exclusão do Usuário?')">
+                    <a href="./usuario/excluir_usuario.php?id_usuario=<?php echo $id ?>" onclick="return confirm('Confirma a Exclusão do Usuário?')">
                         <span class="material-symbols-outlined"> delete </span></a> 
                 </div>
               </div>

@@ -5,15 +5,26 @@ if (ISSET($_POST['email'])){
     $senha = filter_var($_POST['senha'], FILTER_SANITIZE_STRING);
     $sql = "SELECT * FROM usuario WHERE email = '$email';";
     $query = mysqli_query($conexao, $sql);
-    $query = mysqli_fetch_array($query);
-    if($query){
+    $existe = mysqli_num_rows($query);
+    
+    if($existe){
+        $dados = mysqli_fetch_array($query);
+        $hash = $dados['senha'];
+        if(password_verify($senha,$hash)){
         SESSION_START();
         $_SESSION['email'] = $email;
-        $_SESSION['nivel'] = $query['nivel'];
+        $_SESSION['nivel'] = $dados['nivel'];
         header('location:../minha-conta');
-    } else {
-        echo "deu erro";
+        }else{
+            echo "Usuário ou senha inválido";
+        }
+    
+    }else{
+        echo "Usuário ou senha inválido";
     }
+    
 }
 
 ?>
+
+

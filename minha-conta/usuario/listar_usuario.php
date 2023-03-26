@@ -1,6 +1,6 @@
 <?php
-    include "../adm/conexao.php"; //inclui o arquivo de conexão
-    include "../adm/controle.php";
+    include "./includes/conexao.php"; //inclui o arquivo de conexão
+   
     include "../adm/seguranca_adm.php";
 
     // seleciona totodos os campos da tabela usuário ordenado pelo nome
