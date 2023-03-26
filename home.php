@@ -52,7 +52,7 @@ $seleciona = mysqli_query($conexao,$sql);
                   <div class="card-body">
                   <h5 class="card-title"><?= $exibe['nome'];?></h5>
                   <p>R$ <?= $exibe['preco'];?>,00</p>
-                  <a href="#" class="btn botaocard">Comprar</a>
+                  <a href="./checkout.php?id=<?= $exibe['id_produto']?>" class="btn botaocard">Comprar</a>
                   </div>
               </div>
               </div>
