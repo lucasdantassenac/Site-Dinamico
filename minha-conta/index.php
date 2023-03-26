@@ -121,8 +121,7 @@ if(ISSET($_SESSION['email'])){
                   <p class="text-muted mb-0"><?= $query['endereco'] ?></p>
                 </div>
               </div>
-              <?php }elseif($crud === "usuarios" && $_SESSION['nivel'] === 'adm') {
-                ?> 
+              <?php }elseif($crud === "usuarios" && $_SESSION['nivel'] === 'adm') {?> 
                 <div class=" row text-center bg-dark text-light p-2">
                   <div class="col-2">
                   Nome
@@ -159,7 +158,49 @@ if(ISSET($_SESSION['email'])){
                     <a href="alterar_usuario.php?login=<?php echo $login ?>">  
                         <span class="material-symbols-outlined"> edit </span></a> 
                         
-                    <a href="excluir_usuario.php?login=<?php echo $login ?>" onclick="return confirm('Confirma a Exclusão do Usauário?')">
+                    <a href="excluir_usuario.php?login=<?php echo $login ?>" onclick="return confirm('Confirma a Exclusão do Usuário?')">
+                        <span class="material-symbols-outlined"> delete </span></a> 
+                </div>
+              </div>
+              <hr>
+              <?php }}elseif($crud === 'produtos' && $_SESSION['nivel'] === 'adm') {?>
+                <div class=" row text-center bg-dark text-light p-2">
+                  <div class="col-5">
+                  Foto
+                  </div>
+                  <div class="col-2">
+                  Nome
+                  </div>
+                  <div class="col-2">
+                  Peço
+                  </div>
+                  <div class="col-3">
+                  Controles
+                  </div>
+              </div>
+              <?php
+              $sql = "SELECT * FROM produtos ORDER BY 'nome';";
+              $produtos = mysqli_query($conexao, $sql);
+              while($produto = mysqli_fetch_array($produtos)){?>
+                
+              <div class=" row text-center  p-2">
+                <div class="col-5">
+                <?php echo "<img src='../img/".$produto['foto']."alt='Foto do produto'>"; ?>
+                </div>
+                <div class="col-2">
+                <?php echo $produto['nome'] ?>
+                </div>
+                <div class="col-2">
+                <?php echo $produto['preco'] ?>
+                </div>
+                <div class="col-3">
+                    <a href="vizualizar_usuario.php?login=<?php echo $login ?>">
+                        <span class="material-symbols-outlined"> visibility </span></a> 
+
+                    <a href="alterar_usuario.php?login=<?php echo $login ?>">  
+                        <span class="material-symbols-outlined"> edit </span></a> 
+                        
+                    <a href="excluir_usuario.php?login=<?php echo $login ?>" onclick="return confirm('Confirma a Exclusão do Produto?')">
                         <span class="material-symbols-outlined"> delete </span></a> 
                 </div>
               </div>
