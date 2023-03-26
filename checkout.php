@@ -13,6 +13,12 @@ if(ISSET($_GET['id'])){
   $query = mysqli_fetch_array(mysqli_query($conexao, $sql));
   $img = $query['foto'];
 }
+
+
+/*curl --request POST \
+     --url https://sandbox.api.pagseguro.com/oauth2/application \
+     --header 'accept: application/json' \
+     --header 'content-type: application/json'*/
 ?>
   <body class="bg-light">
   <?php include './includes/header.php';?>
