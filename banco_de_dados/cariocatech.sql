@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 25-Mar-2023 às 23:55
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.2.0
+-- Tempo de geração: 26-Mar-2023 às 13:51
+-- Versão do servidor: 10.4.25-MariaDB
+-- versão do PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,7 @@ CREATE TABLE `compras` (
   `valor_total` float DEFAULT NULL,
   `id_produto` int(11) DEFAULT NULL,
   `id_usuario` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -55,7 +55,7 @@ CREATE TABLE `produtos` (
   `id_comentario` int(11) DEFAULT NULL,
   `id_avaliacao` int(11) DEFAULT NULL,
   `id_compra` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `produtos`
@@ -83,14 +83,15 @@ CREATE TABLE `usuario` (
   `endereco` varchar(255) NOT NULL,
   `id_compra` int(11) DEFAULT NULL,
   `celular` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `foto`, `nome`, `cartao`, `email`, `criacao`, `nascimento`, `nivel`, `senha`, `endereco`, `id_compra`, `celular`) VALUES
-(1, 'user.png', 'Lucas', NULL, 'lucas@lucas.com', '2023-03-25 22:18:46', NULL, 'adm', '123', 'Rua tal', NULL, '(21) 99999-9999');
+(1, 'user.png', 'Lucass', NULL, 'lucas@lucas.com', '2023-03-26 11:38:13', NULL, 'adm', '123', 'Rua tal', NULL, '(21) 99999-9999'),
+(6, NULL, 'Felipe', NULL, 'felipe@felipe.com', '2023-03-26 09:13:41', NULL, 'adm', '$2y$10$yavmU0f9fbzA.Xa/Mrai2Or.TFopmCmrm0teEgu3nlV9jqJ4JiWsC', '', NULL, NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -138,7 +139,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Restrições para despejos de tabelas
